@@ -15,8 +15,18 @@ export function getList() {
 }
 
 export function create(values) {
+    return submit(values, 'post')
+}
+
+export function update(values) {
+    return submit(values, 'put')
+}
+
+function submit(values, method) {
+    const id = values._id ? values._id : ''
+
     return dispatch => {
-        axios.post(`${BASE_URL}/billingCycles`, values)
+        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(resp => {
                 toastr.success('Success', 'Operation successfully performed')
                 dispatch(init())
@@ -37,7 +47,7 @@ export function showUpdate(billingCycle) {
 
 export function init() {
     return [
-        showTabs('tablist', 'tabCreate'),
+        showTabs('tabCreate', 'tabList'),
         selectTab('tabList'),
         getList(),
         initialize('billingCycleForm', INITIAL_VALUES)
