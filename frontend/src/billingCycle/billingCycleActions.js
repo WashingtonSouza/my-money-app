@@ -32,7 +32,7 @@ function submit(values, method) {
     return dispatch => {
         axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(resp => {
-                toastr.success('Success', 'Operation successfully performed')
+                toastr.success('Success', 'Operação realizada com sucesso')
                 dispatch(init())
             })
             .catch(e => {

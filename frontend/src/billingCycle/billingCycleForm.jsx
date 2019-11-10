@@ -13,16 +13,18 @@ class BillingCycleForm extends Component {
         return(
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>
-                    <Field name='name' component= {labelAndInput} label='Name'
-                        cols='12 4' placeholder='Enter the name' readOnly={readOnly} />
-                    <Field name='month' component= {labelAndInput} label='Month' 
-                        cols='12 4' type='number' placeholder='Enter the month' readOnly={readOnly} />
-                    <Field name='year' component= {labelAndInput} label='Year'
-                        cols='12 4' type='number' placeholder='Enter the year' readOnly={readOnly} />
+                    <Field name='name' component= {labelAndInput} label='Nome'
+                        cols='12 4' placeholder='Informe o nome' readOnly={readOnly} />
+                    <Field name='month' component= {labelAndInput} label='Mês' 
+                        cols='12 4' type='number' placeholder='Informe o mês' readOnly={readOnly} />
+                    <Field name='year' component= {labelAndInput} label='Ano'
+                        cols='12 4' type='number' placeholder='Informe o ano' readOnly={readOnly} />
                 </div>
                 <div className='box-footer'>
-                    <button type='submit' className='btn btn-primary'>Submit</button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}>Cancel</button>
+                    <button type='submit' className={`btn btn-${this.props.submitClass}`}>
+                        {this.props.submitLabel}
+                    </button>
+                    <button type='button' className='btn btn-default' onClick={this.props.init}>Cancelar</button>
                 </div>
             </form>
         )
