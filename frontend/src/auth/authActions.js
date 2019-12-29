@@ -6,7 +6,7 @@ export function login(values) {
     return submit(values, `${consts.OAPI_URL}/login`)
 }
 
-export function signuo(values) {
+export function signup(values) {
     return submit(values, `${consts.OAPI_URL}/signup`)
 }
 
@@ -29,7 +29,7 @@ function submit(values, url) {
     }
 }
 
-function validateToken(token) {
+export function validateToken(token) {
     return dispatch => {
         if(token) {
             axios.post(`${consts.OAPI_URL}/validateToken`, {token} )
