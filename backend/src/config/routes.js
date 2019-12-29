@@ -1,11 +1,21 @@
-const express = require('express')
+const express = require('express'),
+    auth = require('./auth')
 
 module.exports = function(server) {
-    //Define base URL for all routers
-    const router = express.Router()
-    server.use('/api', router)
+    // Routers protected by JWT Token
+    const protectedApi = express.Router()
+    server.use('/api', protectedApi)
+    protectedApi.use(auth)
 
-    //Billing cycle routers
     const BillingCycle = require('../api/billingCycle/billingCycleService')
-    BillingCycle.register(router, '/billingCycles')
+    BillingCycle.register(protectedApi, '/billingCycles')
+
+    // Open Routers
+    const openApi = express.Router()
+    server.use('/oapi', openApi)
+
+    const AuthService = require('../api/user/authService')
+    openApi.post('/login', AuthService.login)
+    openApi.post('/signup', AuthService.signup)
+    openApi.post('/validateToken', AuthService.validateToken)
 }
