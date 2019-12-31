@@ -48,5 +48,5 @@ module.exports = {
   authSecret: 'YOUR SECRET STRING'
 }
 ```
-####Don't forget to add this file on gitignore
+#### Don't forget to add this file on gitignore
 
