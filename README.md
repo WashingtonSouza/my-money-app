@@ -39,3 +39,14 @@ If you end up having a message like the one below when trying to run the back-en
 ```
 MongoError: failed to connect to server [localhost:27017] on first connect [MongoError: connect ECONNREFUSED 127.0.0.1:27017]
 ```
+## Auth
+To run the project is necessary to create the .env file inside the `backend/src` 
+
+#### File content Example:
+```
+module.exports = {
+  authSecret: 'YOUR SECRET STRING'
+}
+```
+####Don't forget to add this file on gitignore
+
